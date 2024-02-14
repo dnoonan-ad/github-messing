@@ -1,0 +1,37 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# IDE or editor files
+.vscode/
+.idea/
+
+# Dependency folders
+lib/
+lib64/
+dist/
+build/
+*.egg-info/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.so
+*.dll
+*.exe
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Local configuration
+*.env
+*.env.*
