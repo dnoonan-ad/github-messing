@@ -92,8 +92,8 @@ def create_github_commit(username, repo_name, access_token, branch, commit_messa
 
     print(f"Commit successful. New commit SHA: {new_commit_sha}")
 
-def read_designs(start_date):
-    file_path = "designs/hi.txt"
+def read_designs(start_date, design):
+    file_path = f"designs/{design}"
 
     with open(file_path, "r") as file:
         data_array = file.read().splitlines()
@@ -101,6 +101,7 @@ def read_designs(start_date):
     set_date = datetime.strptime(start_date, "%d/%m/%Y").date()
     today_date = datetime.now().date()
     days_difference = (today_date - set_date).days
+    print(f"days between start date and today:{days_difference}")
     if str(days_difference) in data_array:
         return 20
     else:
@@ -117,8 +118,9 @@ def main():
     file_path = os.environ.get('FILE_PATH')
     commit_message = os.environ.get('COMMIT_MESSAGE')
     start_date = os.environ.get('START_DATE')
+    design = os.environ.get('DESIGN')
     
-    loop_amount = read_designs(start_date)
+    loop_amount = read_designs(start_date, design)
     print(f'creating {loop_amount} commits')
     for i in range(int(loop_amount)):
         create_github_commit(username, repo_name, access_token, branch, commit_message, file_path)
